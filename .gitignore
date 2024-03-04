@@ -1,0 +1,9 @@
+# data
+*.zip
+*.csv
+data/*
+!data/geojsons/
+
+# py artifacts
+__pycache__/
+.ipynb_checkpoints/
