@@ -1,0 +1,23 @@
+
+services:
+  db:
+    container_name: db
+    image: spatialite
+    volumes:
+    - ./data:/app/
+    command: [ "bikes" ]
+    networks:
+      - bikes
+  adminer:
+    container_name: adminer
+    image: adminer
+    volumes:
+    - ./data:/app
+    ports: 
+    - 8080:8080
+    networks:
+      - bikes
+
+networks:
+  bikes:
+    name: bikes
