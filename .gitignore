@@ -3,6 +3,7 @@
 *.csv
 data/*
 !data/geojsons/
+*.db
 
 # py artifacts
 __pycache__/
