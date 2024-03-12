@@ -24,3 +24,20 @@ M9V|0
 ### Virtual table mechanism
 
 Creates an interface against which spatialite can apply SQL queries. Not a real table stored inside the database. When we run `ST_CONTAINS` on the virtual geojson table, spatialite is accessing the geojson to complete the query. `CREATE INDEX`, `ALTER`, and other altering statements cannot be made against virtual tables
+
+### loading sqlite extension in python
+
+```bash
+# installs the two plus all dependencies, e.g. proj-data, libgeos, freexl
+sudo apt update && apt install sqlite3 libsqlite3-mod-spatialite -y
+
+# rebuild python to enable loading sqlite extensions
+LDFLAGS="-L/usr/lib" \
+CPPFLAGS="-I/usr/include" \
+PYTHON_CONFIGURE_OPTS="--enable-loadable-sqlite-extensions" \
+pyenv install 3.12
+```
+
+- `LDFLAGS` - [linker flags for nonstandard *lib_dir* e.g. `-L<lib_dir>`](https://docs.python.org/3/using/configure.html#envvar-LDFLAGS)
+- `CPPFLAGS` - [C preprocessor flags for nonstandard *include_dir* e.g. `-I<incl_dir>`](https://docs.python.org/3/using/configure.html#envvar-CPPFLAGS)
+- specified in `/usr/` since that's where sqlite3 was found in WSL2 ubuntu22.04 env
