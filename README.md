@@ -27,6 +27,8 @@ Creates an interface against which spatialite can apply SQL queries. Not a real 
 
 ### loading sqlite extension in python
 
+[see docs](https://docs.python.org/3/using/configure.html#cmdoption-enable-loadable-sqlite-extensions). If building from source instead of `pyenv`, pass to `./configure` before `make && make install`
+
 ```bash
 # installs the two plus all dependencies, e.g. proj-data, libgeos, freexl
 sudo apt update && apt install sqlite3 libsqlite3-mod-spatialite -y
